@@ -1,5 +1,5 @@
-## Java-Callgraph-from-CHP
-# Introducing
+# Java-Callgraph-from-CHP
+### Introducing
 
 This project is created for extend the capability of the Call Hierarchy Printer.
 Original project: https://github.com/pbadenski/call-hierarchy-printer
