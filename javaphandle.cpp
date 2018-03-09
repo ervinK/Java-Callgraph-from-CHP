@@ -125,7 +125,8 @@ string transformToCall(string arg1, string arg2){
 	
 	int i = arg1.length()-1;
 	while(arg1[i] != '/'){
-		arg1[i] = '?';
+		arg1[i] = '?';			/* delete the file name and the classpath
+							-> denote the package path */
 		i--;
 	}
 	
@@ -173,19 +174,6 @@ string transformToCall(string arg1, string arg2){
 	
 }
 
-
-int tabszaml(string str){
-	int count = 0;
-	for(int i = 0; i < str.length(); i++){
-		if(str[i] == '\t'){
-			count++;
-		}
-	}	
-	if(count > 1){
-		return 0;
-	}
-	return 1;
-}
 
 int main(int argc, char** argv){
 
