@@ -17,6 +17,9 @@ If there is a project and the directory hierarchy like: Test/bin/classes..... , 
 You need to type:
 `./startcg Test Test/bin Test/src`
 
+### Output
+The output format is similar to the CHP's. But since it is a method **HIERARCHY** builder, to call it to every single method causes redundancy. Fortunately the subcalled methods are originally tabulated in the CHP, so the output of this project is filtered by this. The output is directed to the `output.txt` . 
+
 
 
 
