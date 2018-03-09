@@ -13,12 +13,16 @@ There is a `startcg.sh` file which leads the project. The bash-script file needs
 3. Path for folder of src directory or that dir what is conatins the packages
 
 **Example**
-If there is a project and the directory hierarchy like: Test/bin/classes..... , Test/src/sourcefiles.....
+If you want to analyze a project, just drag and drop its folder to this project's root.
+So, there is a project and the directory hierarchy like: Test/bin/classes..... , Test/src/sourcefiles.....
 You need to type:
 `./startcg Test Test/bin Test/src`
 
 ### Output
 The output format is similar to the CHP's. But since it is a method **HIERARCHY** builder, to call it to every single method causes redundancy. Fortunately the subcalled methods are originally tabulated in the CHP, so the output of this project is filtered by this. The output is directed to the `output.txt` . 
+
+### Test contents
+This repository has an example folder `ExampleOutputs` and example projects. 
 
 
 
