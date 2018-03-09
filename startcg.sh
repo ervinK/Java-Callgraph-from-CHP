@@ -1,5 +1,8 @@
 #!/bin/bash
 
+
+
+
 j=1;
 mkdir classes
 #1 arg to app: the project folder
@@ -10,6 +13,9 @@ mkdir classes
 #2 arg to cpp: the full path to a classfile
 #3 arg to cpp: full path to bin folder
 #4 arg to cpp: full path to src folder
+
+touch out.txt
+gradle -q showClasspath > this.classpath
 chmod +x javaphandle.cpp
 c++ javaphandle.cpp -o main
 c++ tabu.cpp -o tab
@@ -25,6 +31,7 @@ for i in $(ls $1 -R); do
       concat=$rootval$cval1
 
       javap $concat > classes/$j.txt
+      #echo $j
       arg=classes/$j.txt
       #echo $rootval
       
@@ -42,4 +49,3 @@ done
 rm -r classes
 ./tab out.txt
 rm -r out.txt
-

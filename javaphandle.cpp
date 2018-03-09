@@ -184,15 +184,21 @@ int main(int argc, char** argv){
 	string bin = argv[3];
 	string src = argv[4];
 	myfile.open (argvar.c_str());
+	//cout << argvar << " megnyitva" << endl;
 	string line;
 	int i = 1;
 	string className;
+	/*cout << argv[2] << endl;
+	cout << argv[3] << endl;
+	cout << argv[4] << endl;*/
 	while (getline(myfile, line)) {
+		
 		if(i == 2){
 			className = getClassName(line);
 		}
 
 		if(isFunction(line,className) != ".$failur{e}"){
+
 			string methodName = isFunction(line,className);
 			string classPath = transformToCall(path, bin);
 			cout << "src: " << src << endl;
