@@ -1,0 +1,19 @@
+Method call hierarchy callees of bash_test.Solider.attack(int, bash_test.Solider)
+	bash_test.Weapon.shot(bash_test.Solider, bash_test.Solider)
+	java.io.PrintStream.println(java.lang.String)
+
+Method call hierarchy callees of bash_test.Solider.healWithPill
+	drugs.Xanax.Xanax
+	drugs.Xanax.heal(bash_test.Solider)
+
+Method call hierarchy callees of bash_test.Tank.bumm(bash_test.Solider)
+
+Method call hierarchy callees of bash_test.Weapon.weaponsound
+	java.io.PrintStream.println(java.lang.String)
+
+Method call hierarchy callees of bash_test.Weapon.shot(bash_test.Solider, bash_test.Solider)
+	bash_test.Weapon.weaponsound
+	java.io.PrintStream.println(java.lang.String)
+
+Method call hierarchy callees of drugs.Xanax.heal(bash_test.Solider)
+

@@ -1,0 +1,11 @@
+Method call hierarchy callees of My_class.main(java.lang.String[])
+	Outer_Demo.Outer_Demo
+	Outer_Demo.display_Inner
+
+Method call hierarchy callees of Outer_Demo.display_Inner
+	Outer_Demo.Inner_Demo.Inner_Demo
+	Outer_Demo.Inner_Demo.print
+
+Method call hierarchy callees of Outer_Demo.Inner_Demo.print
+	java.io.PrintStream.println(java.lang.String)
+
