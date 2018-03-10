@@ -17,7 +17,7 @@ mkdir -p build/dependency-cache
 #4 arg to cpp: full path to src folder
 
 touch out.txt
-gradle -q showClasspath > this.classpath
+#gradle -q showClasspath > this.classpath
 chmod +x javaphandle.cpp
 chmod +x tabu.cpp
 chmod +x out.txt
