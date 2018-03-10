@@ -5,6 +5,8 @@
 
 j=1;
 mkdir classes
+mkdir -p build/resources/main
+mkdir -p build/dependency-cache
 #1 arg to app: the project folder
 #2 arg to app: full path to bin folder
 #3 arg to app: full path to src folder
