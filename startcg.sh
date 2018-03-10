@@ -17,6 +17,8 @@ mkdir classes
 touch out.txt
 gradle -q showClasspath > this.classpath
 chmod +x javaphandle.cpp
+chmod +x tabu.cpp
+chmod +x out.txt
 c++ javaphandle.cpp -o main
 c++ tabu.cpp -o tab
 for i in $(ls $1 -R); do
@@ -49,3 +51,4 @@ done
 rm -r classes
 ./tab out.txt
 rm -r out.txt
+echo 'Callgraph is printed to the output.txt'
