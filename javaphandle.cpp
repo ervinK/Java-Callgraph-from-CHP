@@ -73,6 +73,9 @@ string getClassName(string str){ /* handling the nested classes too, where
 			while(str[i] != ' ' && str[i] != '{'){ toStr[count] = str[i]; i++; count++;}
 			toStr[count] = '\0';
 			string retStr(toStr);
+			if(retStr == "1" || retStr == "2"){
+				return "badcname";
+			}
 			return cutRoot(retStr);
 		}else{
 			int i = isMatch(str,"class ");
@@ -89,7 +92,7 @@ string getClassName(string str){ /* handling the nested classes too, where
 		}
 	}else{
 		cout << "Bad given datas!" << endl;
-		exit(0);
+		return "badcname";
 	}
 	
 }
@@ -120,56 +123,58 @@ string isFunction(string str, string className){
 	
 }
 
-
-string transformToCall(string arg1, string arg2){
-	
-	int i = arg1.length()-1;
-	while(arg1[i] != '/'){
-		arg1[i] = '?';			/* delete the file name and the classpath
-							-> denote the package path */
-		i--;
+string eraseSubStr(string & mainStr, const string & toErase)
+{
+	// Search for the substring in string
+	size_t pos = mainStr.find(toErase);
+ 
+	if (pos != std::string::npos)
+	{
+		// If found then erase it from string
+		mainStr.erase(pos, toErase.length());
 	}
+	return mainStr;
+}
+
+string transformToClassPath(string arg1, string arg2){
 	
-	int j = isMatch(arg1,arg2);
+	if(arg1.find(arg2) != std::string::npos){
+
 	
-	if(j != -1){
-		while(j >= 0){
-			arg1[j] = '?';
-			j--;
+		int i = arg1.length()-1;
+		int num = 0;
+		while(arg1[i] != '/'){
+			arg1[i] = '?';
+			num++;
+			i--;
 		}
-		int count = 0;
-		for(int k = 0; k < arg1.length(); k++){
-			if(arg1[k] != '?'){
-				count++;
+		char withoutClassfile[arg1.length()-num];
+		num = 0;
+		for(int i = 0; i < arg1.length(); i++){
+			if(arg1[i] != '?'){
+				withoutClassfile[num] = arg1[i];
+				num++;
 			}
 		}
-		if(count == 0){
+		if(num == 0){
 			return "";
 		}
-		char retStr[count];
-		count = 0;
-		for(int k = 0; k < arg1.length(); k++){
-			if(arg1[k] != '?'){
-				if(arg1[k] == '/'){
-					retStr[count] = '.';
-				}else{
-					retStr[count] = arg1[k];
-				}
-				count++;
+		withoutClassfile[num] = '\0';
+		string strToFormat(withoutClassfile);
+		string retStr = eraseSubStr(strToFormat,arg2 + "/");
+		for(int i = 0; i < retStr.length(); i++){
+			if(retStr[i] == '/'){
+				retStr[i] = '.';
 			}
 		}
-		if(count == 0){
-			return "";
-		}
-		
-		retStr[count] = '\0';
-		string rStr(retStr); 
-		return rStr;
+		return retStr;
+	
+	
 		
 	}else{
-		exit(0);
+		cout << "In path " << arg1 << " can't find the " << arg2 << " binary dir! " << endl;
+		return "Invalid classpath-binarypath couple";
 	}
-	return arg1;
 	
 	
 }
@@ -198,15 +203,19 @@ int main(int argc, char** argv){
 		}
 
 		if(isFunction(line,className) != ".$failur{e}"){
-
+			
 			string methodName = isFunction(line,className);
-			string classPath = transformToCall(path, bin);
+			
+			string classPath = transformToClassPath(path, bin);
 			cout << "src: " << src << endl;
 			cout << "classpathToSrc: " << classPath << endl;
 			cout << "className: " << className << endl;
 			cout << "functName: " << methodName << endl;
+			if(className != "badcname" && className != ""){
+				system(("java -jar org.chp-1.0.jar -s " + src + " -m " + classPath + className + "." + methodName + " --classpath-file this.classpath >> out.txt").c_str());
+			}
 
-			system(("java -jar org.chp-1.0.jar -s " + src + " -m " + classPath + className + "." + methodName + " --classpath-file this.classpath >> out.txt").c_str());
+			
 			
 		}
 		

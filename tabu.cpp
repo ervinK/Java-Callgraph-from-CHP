@@ -44,6 +44,7 @@ int main(int argc, char** argv){
 	outfile.open ("output.txt");
 	for(int i = 0; i < numberOfLines; i++){
 		outfile << lines[i] << endl;
+		//cout <<lines[i] << endl;
 		
 	}
 	
