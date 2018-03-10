@@ -7,7 +7,7 @@ CHP is for mapping hierarchy of method calls for a given method. As I mentioned,
 
 ### Usage
 
-Firstly you must get gradle and type: gradle -q showClasspath > this.classpath
+Firstly you must get gradle and type: `gradle -q showClasspath > this.classpath`
 
 There is a `startcg.sh` file which leads the project. The bash-script file needs 3 parameters:
 1. The root directory of the project
