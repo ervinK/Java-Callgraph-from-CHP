@@ -1,12 +1,13 @@
 #!/bin/bash
 
 
-
+echo 'loading.'
 
 j=1;
 mkdir classes
 mkdir -p build/resources/main
 mkdir -p build/dependency-cache
+echo 'loading..'
 #1 arg to app: the project folder
 #2 arg to app: full path to bin folder
 #3 arg to app: full path to src folder
@@ -38,7 +39,9 @@ fi
 chmod +x javaphandle.cpp
 chmod +x out.txt
 echo  > out.txt
+echo 'loading...'
 c++ javaphandle.cpp -o main
+echo '[   THE CHP IS CALLED FOR:   ]'
 for i in $(ls $1 -R); do
   if [[ $i = *":"* ]]; 
   then
