@@ -1,13 +1,12 @@
 #!/bin/bash
 
 
-echo 'loading.'
+
 
 j=1;
 mkdir classes
 mkdir -p build/resources/main
 mkdir -p build/dependency-cache
-echo 'loading..'
 #1 arg to app: the project folder
 #2 arg to app: full path to bin folder
 #3 arg to app: full path to src folder
@@ -19,7 +18,7 @@ echo 'loading..'
 
 touch out.txt
 touch output.txt
-echo  > output.txt
+cp /dev/null output.txt
 #gradle -q showClasspath > this.classpath
 #if this.classpath is not exists, create that
 cp=0;
@@ -39,9 +38,7 @@ fi
 chmod +x javaphandle.cpp
 chmod +x out.txt
 echo  > out.txt
-echo 'loading...'
 c++ javaphandle.cpp -o main
-echo '[   THE CHP IS CALLED FOR:   ]'
 for i in $(ls $1 -R); do
   if [[ $i = *":"* ]]; 
   then
